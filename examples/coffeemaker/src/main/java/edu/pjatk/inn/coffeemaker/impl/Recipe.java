@@ -25,14 +25,15 @@ public class Recipe implements Serializable {
     	this.amtSugar = 0;
     	this.amtChocolate = 0;
     }
-    
     /**
+	 * Returns the amount of chocolate in the coffee recipe.
 	 * @return   Returns the amtChocolate.
 	 */
     public int getAmtChocolate() {
 		return amtChocolate;
 	}
     /**
+	 * Sets the amount of chocolate in the coffee recipe if the amount is positive number.
 	 * @param amtChocolate   The amtChocolate to setValue.
 	 */
     public void setAmtChocolate(int amtChocolate) {
@@ -41,12 +42,14 @@ public class Recipe implements Serializable {
 		} 
 	}
     /**
+	 * Returns the amount of coffee in the coffee recipe.
 	 * @return   Returns the amtCoffee.
 	 */
     public int getAmtCoffee() {
 		return amtCoffee;
 	}
     /**
+	 * Sets the amount of coffee in the coffee recipe if the amount is positive number.
 	 * @param amtCoffee   The amtCoffee to setValue.
 	 */
     public void setAmtCoffee(int amtCoffee) {
@@ -55,12 +58,15 @@ public class Recipe implements Serializable {
 		} 
 	}
     /**
+	 * Returns the amount of milk in the coffee recipe.
 	 * @return   Returns the amtMilk.
 	 */
     public int getAmtMilk() {
 		return amtMilk;
 	}
     /**
+	 *
+	 * Sets the amount of milk in the coffee recipe if the amount is positive number.
 	 * @param amtMilk   The amtMilk to setValue.
 	 */
     public void setAmtMilk(int amtMilk) {
@@ -69,12 +75,14 @@ public class Recipe implements Serializable {
 		} 
 	}
     /**
+	 * Returns the amount of sugar in the coffee recipe.
 	 * @return   Returns the amtSugar.
 	 */
     public int getAmtSugar() {
 		return amtSugar;
 	}
     /**
+	 * Sets the amount of sugar in the coffee recipe if the amount is positive number.
 	 * @param amtSugar   The amtSugar to setValue.
 	 */
     public void setAmtSugar(int amtSugar) {
@@ -83,12 +91,14 @@ public class Recipe implements Serializable {
 		} 
 	}
     /**
+	 * Returns the name of the coffee recipe.
 	 * @return   Returns the name.
 	 */
     public String getName() {
 		return name;
 	}
     /**
+	 * Sets the name of the coffee recipe if the name isn't null.
 	 * @param name   The name to setValue.
 	 */
     public void setName(String name) {
@@ -97,29 +107,44 @@ public class Recipe implements Serializable {
     	}
 	}
     /**
+	 * Returns the price of the coffee recipe.
 	 * @return   Returns the price.
 	 */
     public int getPrice() {
 		return price;
 	}
     /**
+	 * Sets the price of the coffee recipe if the price is a positive number.
 	 * @param price   The price to setValue.
 	 */
     public void setPrice(int price) {
 		if (price >= 0) {
 			this.price = price;
 		} 
-	} 
+	}
+	/**
+	 * Returns true if the recipe has the same name as given recipe.
+	 * @param r  The recipe to compare.
+	 * @return true if the recipes have the same name; false otherwise.
+	 */
     public boolean equals(Recipe r) {
         if((this.name).equals(r.getName())) {
             return true;
         }
         return false;
     }
+	/**
+	 * Returns a String object representing this Recipe, equal to its name.
+	 * @return a String representation of this Recipe.
+	 */
     public String toString() {
     	return name;
     }
-
+	/**
+	 * Creates the recipe of the coffee from given Context and returns it.
+	 * @param context  The context of the recipe.
+	 * @return Returns the recipe.
+	 */
 	static public Recipe getRecipe(Context context) throws ContextException {
 		Recipe r = new Recipe();
 		r.name = (String)context.getValue("name");
@@ -130,7 +155,11 @@ public class Recipe implements Serializable {
 		r.amtChocolate = (int)context.getValue("amtChocolate");
 		return r;
 	}
-
+	/**
+	 * Creates the context of given recipe and returns it.
+	 * @param recipe  The recipe to give.
+	 * @return Returns the context of recipe.
+	 */
 	static public Context getContext(Recipe recipe) throws ContextException {
 		Context cxt = new ServiceContext();
 		cxt.putValue("name", recipe.getName());
@@ -141,6 +170,4 @@ public class Recipe implements Serializable {
 		cxt.putValue("amtChocolate", recipe.getAmtChocolate());
 		return cxt;
 	}
-
-
 }
