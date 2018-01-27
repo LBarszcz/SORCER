@@ -18,6 +18,24 @@ import static org.junit.Assert.assertTrue;
 import static sorcer.eo.operator.*;
 import static sorcer.so.operator.eval;
 
+@RunWith(SorcerTestRunner.class)
+@ProjectContext("examples/coffeemaker")
+public class RecipeTest {
+	private final static Logger logger = LoggerFactory.getLogger(CoffeeMakerTest.class);
+
+	private CoffeeMaker coffeeMaker;
+	private Inventory inventory;
+}
+ 
+@RunWith(SorcerTestRunner.class)
+@ProjectContext("examples/coffeemaker")
+public class InventoryTest {
+	private final static Logger logger = LoggerFactory.getLogger(CoffeeMakerTest.class);
+
+	private CoffeeMaker coffeeMaker;
+	private Inventory inventory;
+}
+
 /**
  * @author Mike Sobolewski
  */
@@ -121,6 +139,12 @@ public class CoffeeMakerTest {
 		coffeeMaker.addRecipe(espresso);
 		assertEquals(coffeeMaker.makeCoffee(espresso, 200), 150);
 	}
-
 }
+
+// 1) Add a Recipe, 
+// 2) Delete a Recipe, 
+// 3) Edit a Recipe, 
+// 4) Add Inventory, 
+// 5) Check Inventory,
+// 6) Purchase Coffee
 
