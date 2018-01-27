@@ -1,0 +1,38 @@
+1. deleteRecipe at 92
+Function reasign recipe insted of delete it.
+Old:
+recipeArray[i] = recipeArray[i]
+Fixed:
+recipeArray[i] = new Recipe();
+
+2. editRecipe at 125
+Method try to search new recipe instead of old one and assign blank recipe at found index.
+Old:
+if(newRecipe.equals(recipeArray[i])) 
+{
+	recipeArray[i] = new Recipe();
+Fixed:
+if(oldRecipe.equals(recipeArray[i])) 
+{
+	recipeArray[i] = newRecipe;
+
+3. addInventory at 144
+Wrong condition with sugar amount, if positive inventory wont be added.
+Old:
+amtSugar > 0
+Fixed:
+amtSugar < 0
+
+4. makeCoffee at 180
+After coffee purchase method added amount of coffee to inventory instead of substract.
+Old:
+inventory.setCoffee(inventory.getCoffee() + r.getAmtCoffee());
+Fixed:
+inventory.setCoffee(inventory.getCoffee() - r.getAmtCoffee());
+
+5. CoffeeMaker at 25
+Wrong number of maximum reciepies.
+Old:
+private final int NUM_RECIPES = 4;
+Fixed:
+private final int NUM_RECIPES = 3;
