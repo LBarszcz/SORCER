@@ -13,16 +13,13 @@ public class Order implements Serializable {
     private Date date;
     private Recipe recipe;
     
-	public Order(Strig name, Date date, Recipe recipe) {
+	public Order(String name, Date date, Recipe recipe) {
     	this.name = name;
     	this.date = date;
     	this.recipe = recipe;
     }
 
-    public Order(Strig name, Date date, Recipe recipe) {
-    	this.name = name;
-    	this.date = date;
-    	this.recipe = recipe;
+    public Order() {
     }
 
     public String getName() {
@@ -49,9 +46,9 @@ public class Order implements Serializable {
 	static public Order getOrder(Context context) throws ContextException {
 		Order o = new Order();
 		try {
-			r.name = (String)context.getValue("name");
-			r.date = (Date)context.getValue("date");
-			r.recipe = (int)context.getValue("recipe");
+			o.name = (String)context.getValue("name");
+			o.date = (Date)context.getValue("date");
+			o.recipe = (Recipe)context.getValue("recipe");
 		} catch (RemoteException e) {
 			throw new ContextException(e);
 		}
@@ -60,9 +57,9 @@ public class Order implements Serializable {
 
 	static public Context getContext(Order order) throws ContextException {
 		Context cxt = new ServiceContext();
-		cxt.putValue("name", recipe.getName());
-		cxt.putValue("date", recipe.getDate());
-		cxt.putValue("recipe", recipe.getRecipe());
+		cxt.putValue("name", order.getName());
+		cxt.putValue("date", order.getDate());
+		cxt.putValue("recipe", order.getRecipe());
 		return cxt;
 	}
 }

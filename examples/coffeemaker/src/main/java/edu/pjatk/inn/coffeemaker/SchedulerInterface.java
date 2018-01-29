@@ -5,7 +5,7 @@ import sorcer.service.ContextException;
 
 import java.rmi.RemoteException;
 
-public interface CoffeeService {
+public interface SchedulerInterface {
 
     public Context addOrder(Context context) throws RemoteException, ContextException;
 

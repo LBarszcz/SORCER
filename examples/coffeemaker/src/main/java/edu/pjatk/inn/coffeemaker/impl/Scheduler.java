@@ -1,6 +1,6 @@
 package edu.pjatk.inn.coffeemaker.impl;
 
-import edu.pjatk.inn.coffeemaker.Scheduler;
+import edu.pjatk.inn.coffeemaker.SchedulerInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sorcer.service.Context;
@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * @author   Sarah & Mike
  */
-public class Scheduler implements Scheduler {
+public class Scheduler implements SchedulerInterface {
 	private final static Logger logger = LoggerFactory.getLogger(Scheduler.class);
 
 	private ArrayList<Order> orders;
@@ -22,11 +22,15 @@ public class Scheduler implements Scheduler {
 	    orders = new ArrayList<Order>();
 	}
 
+	public ArrayList<Order> getOrders() {
+		return orders;
+	}
+
 	// Implementation of Scheduler
 	@Override
 	public Context addOrder(Context context) throws RemoteException, ContextException {
 		Order o = Order.getOrder(context);
-		orders.add(o)
+		orders.add(o);
 		context.putValue("addOrder", true);
 		return context;
 	}
