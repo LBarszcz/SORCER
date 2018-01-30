@@ -69,5 +69,22 @@ public class SchedulerTest {
 		Context out = context(exert(cmt));
 		assertEquals(value(out, "addOrder"), true);
 	}
+	
+	@Test
+	public void realizeOrder() throws Exception {
+		Exertion cmt = task(sig("addOrder", Scheduler.class), order1);
+		Context out = context(exert(cmt));
+		assertEquals(value(out, "addOrder"), true);
+		Exertion cmt = task(sig("addOrder", Scheduler.class), order2);
+		Context out = context(exert(cmt));
+		assertEquals(value(out, "addOrder"), true);
+		Exertion cmt = task(sig("addOrder", Scheduler.class), order3);
+		Context out = context(exert(cmt));
+		assertEquals(value(out, "addOrder"), true);
+
+		Exertion cmt = task(sig("realizeOrder", Scheduler.class), order3);
+		Context out = context(exert(cmt));
+		assertEquals(value(out, "realizeOrder"), order1);
+	}
 }
 
